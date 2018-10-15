@@ -44,6 +44,8 @@ class Blog(models.Model):
     title=models.CharField('标题',max_length=32)
     author=models.CharField('作者',max_length=16)
     content=MDTextField()
+    read_number = models.IntegerField('阅读人数',default=0)
+    com_number = models.IntegerField('评论人数', default=0)
     pub=models.DateField('发布时间',auto_now_add=True)
     category=models.ForeignKey(Category,verbose_name='分类',on_delete=models.CASCADE)#多对一（博客--类别）
     tag=models.ManyToManyField(Tag,verbose_name='标签')#(多对多）
