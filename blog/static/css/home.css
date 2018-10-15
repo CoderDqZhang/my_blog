@@ -1,0 +1,39 @@
+.article_content{
+    margin-bottom: 10px;
+    background-color: #fffffc;
+    border:1px solid;
+    border-radius:8px;
+    border-color: #ffffff;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    -moz-box-shadow:2px 2px 5px #333333;
+    -webkit-box-shadow:2px 2px 5px #333333;
+    box-shadow:2px 2px 5px #333333;
+}
+
+.article_info{
+    margin-left: 10px;
+}
+
+.time{
+    font-size: 10px;
+    color: #d0d0d0;
+}
+
+.blog_content{
+    font-size: 15px;
+    line-height: 19px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:4;
+}

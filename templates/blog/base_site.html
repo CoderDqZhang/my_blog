@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>张德全</title>
+    {% block css %} {% endblock %}
+</head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="../../static/css/base_site.css">
+<link rel="stylesheet" type="text/css" href="../../static/css/base_default.css">
+<body>
+<div class="body_count">
+    <div class="user_info_left">
+        <div class="user_info">
+            <img src="https://avatar.csdn.net/7/F/4/3_baiccnymyh.jpg" class="avatar_pic">
+            <p class="name" data-mod="popu_379">{{ user.nickname }}</a>
+            </p>
+        </div>
+        <div class="catgary">
+            {% for categary in categary_list %}
+                <ul>
+                    <li>
+                        {% if categary_id == categary.id %}
+                            <a href="http://127.0.0.1:8000/home/list/?categary={{ categary.id }}"
+                               ga_event="channel_video_click"
+                               class="channel-item_select"><span>{{ categary.name }}</span></a>
+                        {% else %}
+                            <a href="http://127.0.0.1:8000/home/list/?categary={{ categary.id }}"
+                               ga_event="channel_video_click"
+                               class="channel-item_normal"><span>{{ categary.name }}</span></a>
+                        {% endif %}
+
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="bottom">
+            <p>个人技术博客</p>
+        </div>
+    </div>
+    <div class="base_article_content">
+        {% block content %} {% endblock %}
+    </div>
+    <div class="right_article_info">
+        <div class="article_data_group">
+            <img src="../../static/server_images/ercode_image.jpeg" class="ercode_user">
+        </div>
+        <div class="article_data_group">
+            {% for group in data_group_list %}
+                <p></p>
+                <ul>
+                    <li>
+                        {% if group.date_str == data_group %}
+                            <a href="http://127.0.0.1:8000/home/list/?group_data={{ group.id }}"
+                               ga_event="channel_video_click"
+                               class="channel-item_select"><span>{{ group.date_str }}({{ group.number }})</span></a>
+                        {% else %}
+                            <a href="http://127.0.0.1:8000/home/list/?group_data={{ group.id }}"
+                               ga_event="channel_video_click"
+                               class="channel-item_normal"><span>{{ group.date_str }}({{ group.number }})</span></a>
+                        {% endif %}
+
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="article_tag">
+            {% for tag in tag_list %}
+                <ul>
+                    <li>
+                        {% if tag_id == tag.id %}
+                            <a href="http://127.0.0.1:8000/home/list/?tag_id={{ tag.id }}"
+                           ga_event="channel_video_click" class="channel-item_select"><span>{{ tag.name }}</span></a>
+                        {% else %}
+                            <a href="http://127.0.0.1:8000/home/list/?tag_id={{ tag.id }}"
+                           ga_event="channel_video_click" class="channel-item_normal"><span>{{ tag.name }}</span></a>
+                        {% endif %}
+
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% block js %} {% endblock %}
+</body>
+</html>
