@@ -4,27 +4,49 @@ import json
 from blog.blog_model.blog import Blog, Category, Tag, Comment, DataGroup
 from blog.blog_model.account import Account
 import markdown
+#导入Paginator,EmptyPage和PageNotAnInteger模块
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def homeView(request, categary=0, data_group="", tag_id = 0, *args, **kwargs):
-    print(request.GET.get('tag_id'))
-    print(request.GET.get('categary'))
-    print(request.GET.get('data_group'))
-    print(request.GET.get('tag_id'))
+def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **kwargs):
+
     if request.GET.get('categary') != None:
-        blog_list = Blog.objects.filter(id=request.GET.get('categary'))
+        blog_list = Blog.objects.filter(category__id =request.GET.get('categary')).order_by('pub')
         categary = int(request.GET.get('categary'))
+    #TO Do
     elif request.GET.get('data_group') != None:
-        blog_list = Blog.objects.filter(id=request.GET.get('data_group'))
+        blog_list = Blog.objects.filter(id=request.GET.get('data_group')).order_by('pub')
         data_group = str(request.GET.get('data_group'))
     elif request.GET.get('tag_id') != None:
         tag_id = int(request.GET.get('tag_id'))
-        blog_list = Blog.objects.filter(tag__id=request.GET.get('tag_id'))
+        blog_list = Blog.objects.filter(tag__id=request.GET.get('tag_id')).order_by('pub')
     else:
-        blog_list = Blog.objects.all()
+        blog_list = Blog.objects.all().order_by('pub')
+
+    paginator = Paginator(blog_list, 1)
+    #分页控制
+
+    if request.GET.get('page') != None:
+        page = int(request.GET.get('page'))
+    #当前分页
+    try:
+        print(page)
+        blog_list = paginator.page(page)  # 获取当前页码的记录
+        print(blog_list)
+    except PageNotAnInteger:
+        blog_list = paginator.page(1)  # 如果用户输入的页码不是整数时,显示第1页的内容
+    except EmptyPage:
+        blog_list = paginator.page(paginator.num_pages)  # 如果用户输入的页数不在系统的页码列表中时,显示最后一页的内容
+
+    print(blog_list.__len__())
+    if blog_list.__len__() == 0:
+        page = 0
+
     return render(request, 'blog/home.html', {'blog_list': blog_list,
                                               'categary_id': int(categary),
                                               'tag_id': int(tag_id),
+                                              'page':int(page),
+                                              'paginator':paginator,
                                               'data_group': str(data_group),
                                               'categary_list': get_categary_data(),
                                               'data_group_list': get_data_group_data(),
