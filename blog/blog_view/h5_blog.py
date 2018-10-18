@@ -30,15 +30,12 @@ def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **
         page = int(request.GET.get('page'))
     #当前分页
     try:
-        print(page)
         blog_list = paginator.page(page)  # 获取当前页码的记录
-        print(blog_list)
     except PageNotAnInteger:
         blog_list = paginator.page(1)  # 如果用户输入的页码不是整数时,显示第1页的内容
     except EmptyPage:
         blog_list = paginator.page(paginator.num_pages)  # 如果用户输入的页数不在系统的页码列表中时,显示最后一页的内容
 
-    print(blog_list.__len__())
     if blog_list.__len__() == 0:
         page = 0
 
@@ -54,14 +51,15 @@ def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **
                                               'user': get_user_info()})
 
 
-def detailView(request, blog_id):
+def detailView(request, blog_id = 0, *args, **kwargs):
+    print(request.GET.get('blog_id'))
     blog = Blog.objects.get(id=request.GET.get('blog_id'))
     blog.content = markdown.markdown(blog.content, extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc'
     ])
-    blog_nex_pre_data = has_nex_pre(blog_id)
+    blog_nex_pre_data = has_nex_pre(request.GET.get('blog_id'))
     return render(request, 'blog/detail.html', {'blog': blog, 'blog_nex_pre_data': blog_nex_pre_data,
                                                 'categary_id': 0,
                                                 'categary_list': get_categary_data(),
@@ -121,6 +119,7 @@ def has_nex_pre(blog_id):
             id_next += 1
         else:
             has_next = True
+
     data = {}
     data['blog_prev'] = blog_prev
     data['blog_next'] = blog_next
