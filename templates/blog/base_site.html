@@ -21,11 +21,11 @@
                 <ul>
                     <li>
                         {% if categary_id == categary.id %}
-                            <a href="http://127.0.0.1:8000/home/list/?categary={{ categary.id }}"
+                            <a href="?categary={{ categary.id }}"
                                ga_event="channel_video_click"
                                class="channel-item_select"><span>{{ categary.name }}</span></a>
                         {% else %}
-                            <a href="http://127.0.0.1:8000/home/list/?categary={{ categary.id }}"
+                            <a href="?categary={{ categary.id }}"
                                ga_event="channel_video_click"
                                class="channel-item_normal"><span>{{ categary.name }}</span></a>
                         {% endif %}
@@ -51,11 +51,11 @@
                 <ul>
                     <li>
                         {% if group.date_str == data_group %}
-                            <a href="http://127.0.0.1:8000/home/list/?group_data={{ group.id }}"
+                            <a href="?group_data={{ group.id }}"
                                ga_event="channel_video_click"
                                class="channel-item_select"><span>{{ group.date_str }}({{ group.number }})</span></a>
                         {% else %}
-                            <a href="http://127.0.0.1:8000/home/list/?group_data={{ group.id }}"
+                            <a href="?group_data={{ group.id }}"
                                ga_event="channel_video_click"
                                class="channel-item_normal"><span>{{ group.date_str }}({{ group.number }})</span></a>
                         {% endif %}
@@ -69,10 +69,10 @@
                 <ul>
                     <li>
                         {% if tag_id == tag.id %}
-                            <a href="http://127.0.0.1:8000/home/list/?tag_id={{ tag.id }}"
+                            <a href="?tag_id={{ tag.id }}"
                            ga_event="channel_video_click" class="channel-item_select"><span>{{ tag.name }}</span></a>
                         {% else %}
-                            <a href="http://127.0.0.1:8000/home/list/?tag_id={{ tag.id }}"
+                            <a href="?tag_id={{ tag.id }}"
                            ga_event="channel_video_click" class="channel-item_normal"><span>{{ tag.name }}</span></a>
                         {% endif %}
 
