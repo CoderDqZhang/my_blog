@@ -24,10 +24,10 @@ SECRET_KEY = '11qng2+m96io&$pqr%!cur@i1d+a793d60ik2e$r4*j1rt+ik3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 from blog.until import define
-if (define.get_mac_address() == '00:16:3e:08:f3:70') :
-    DEBUG = False
-else:
-    DEBUG = True
+# if (define.get_mac_address() == '00:16:3e:08:f3:70') :
+#     DEBUG = False
+# else:
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
