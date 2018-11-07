@@ -44,11 +44,14 @@ class Blog(models.Model):
     title=models.CharField('标题',max_length=255)
     author=models.CharField('作者',max_length=16)
     content=MDTextField()
+    image = models.ImageField('展示图片',upload_to="media/blog_list/%Y/%m", default=u"image/list.png", max_length=200, null=True)
     read_number = models.PositiveIntegerField('阅读人数',default=0)
     com_number = models.IntegerField('评论人数', default=0)
     pub=models.DateField('发布时间',auto_now_add=True)
     category=models.ForeignKey(Category,verbose_name='分类',on_delete=models.CASCADE)#多对一（博客--类别）
-    tag=models.ManyToManyField(Tag,verbose_name='标签')#(多对多）
+    tag=models.ManyToManyField(Tag,verbose_name='标签')#(多对多)
+    recommend = models.BooleanField('推荐',default=False)
+
     class Meta:
         verbose_name="博客"
         verbose_name_plural=verbose_name

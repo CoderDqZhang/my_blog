@@ -8,8 +8,12 @@ import markdown
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **kwargs):
+def about(request, *args, **kwargs):
+    return render(request, 'blog_temp/about.html',{'user': get_user_info(),
+                                                   'categary_list': get_categary_data(),})
 
+def homeView(request, page = 1, categary=0, data_group= "", tag_id = 0, *args, **kwargs):
+    print(request)
     if request.GET.get('categary') != None:
         blog_list = Blog.objects.filter(category__id =request.GET.get('categary')).order_by('pub')
         categary = int(request.GET.get('categary'))
@@ -23,7 +27,10 @@ def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **
     else:
         blog_list = Blog.objects.all().order_by('pub')
 
-    paginator = Paginator(blog_list, 1)
+    click_blog_list = Blog.objects.all().order_by('read_number')
+    recommond_list = Blog.objects.all().filter(recommend=True)
+
+    paginator = Paginator(blog_list, 2)
     #分页控制
 
     if request.GET.get('page') != None:
@@ -39,7 +46,7 @@ def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **
     if blog_list.__len__() == 0:
         page = 0
 
-    return render(request, 'blog/home.html', {'blog_list': blog_list,
+    return render(request, 'blog_temp/home.html', {'blog_list': blog_list,
                                               'categary_id': int(categary),
                                               'tag_id': int(tag_id),
                                               'page':int(page),
@@ -48,7 +55,9 @@ def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **
                                               'categary_list': get_categary_data(),
                                               'data_group_list': get_data_group_data(),
                                               'tag_list': get_tag_data(),
-                                              'user': get_user_info()})
+                                              'user': get_user_info(),
+                                              'click_blog_list':click_blog_list,
+                                              'recommond_list':recommond_list})
 
 
 def detailView(request, blog_id = 0, *args, **kwargs):
@@ -62,13 +71,13 @@ def detailView(request, blog_id = 0, *args, **kwargs):
         'markdown.extensions.toc'
     ])
     blog_nex_pre_data = has_nex_pre(request.GET.get('blog_id'))
-    return render(request, 'blog/detail.html', {'blog': blog, 'blog_nex_pre_data': blog_nex_pre_data,
+    return render(request, 'blog/../../templates/blog_temp/detail.html', {'blog': blog, 'blog_nex_pre_data': blog_nex_pre_data,
                                                 'categary_id': 0,
                                                 'categary_list': get_categary_data(),
                                                 'data_group_list': get_data_group_data(),
                                                 'tag_list': get_tag_data(),
                                                 'user': get_user_info()
-                                                })
+                                                                          })
 
 
 def testView(request):
@@ -80,7 +89,7 @@ def testView(request):
         'markdown.extensions.extra'
     ])
     blog.content = blog_content
-    return render(request, 'blog/test.html', {'blog': blog, 'blog_content': blog_content})
+    return render(request, 'blog_temp/index.html', {'blog': blog, 'blog_content': blog_content})
 
 
 def test(request):

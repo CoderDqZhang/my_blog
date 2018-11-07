@@ -12,6 +12,8 @@ class Account(models.Model):
     createTime = models.DateField(auto_created=True, auto_now_add=True)
     gender = models.IntegerField('性别', choices=define.GENDER, default=0, null=True)
     phone = models.CharField('电话', max_length=11, default='', null=True)
+    abposition = models.CharField('职位', max_length=255, default='', null=True)
+    abtext = models.CharField('简介', max_length=255, default='', null=True)
 
     class Meta:
         verbose_name="用户"

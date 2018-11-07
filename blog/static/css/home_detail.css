@@ -1,16 +1,16 @@
 .article_content{
     background-color: #fffffc;
-    border:1px solid;
-    border-radius:8px;
+    /*border:1px solid;*/
+    /*border-radius:8px;*/
     border-color: #ffffff;
     flex-direction: column;
     display: flex;
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
-    -moz-box-shadow:2px 2px 5px #333333;
-    -webkit-box-shadow:2px 2px 5px #333333;
-    box-shadow:2px 2px 5px #333333;
+    /*-moz-box-shadow:2px 2px 5px #333333;*/
+    /*-webkit-box-shadow:2px 2px 5px #333333;*/
+    /*box-shadow:2px 2px 5px #333333;*/
     margin-bottom: 10px;
 }
 
@@ -24,6 +24,7 @@
 }
 
 .blog_content{
+    background-color: #ffffff;
     line-height: 19px;
     margin-left: 10px;
     margin-right: 10px;

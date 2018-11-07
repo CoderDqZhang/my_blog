@@ -24,16 +24,17 @@ SECRET_KEY = '11qng2+m96io&$pqr%!cur@i1d+a793d60ik2e$r4*j1rt+ik3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 from blog.until import define
-# if (define.get_mac_address() == '00:16:3e:08:f3:70') :
-#     DEBUG = False
-# else:
-DEBUG = True
+
+if (define.get_mac_address() == '00:16:3e:08:f3:70') :
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  #uploads必须存在，且在项目目录下
-MEDIA_URL = '/media/'   #你上传的文件和图片会默认存在/uploads/editor下
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")  #uploads必须存在，且在项目目录下
+MEDIA_URL = '/uploads/'   #你上传的文件和图片会默认存在/uploads/editor下
 
 # Application definition
 
