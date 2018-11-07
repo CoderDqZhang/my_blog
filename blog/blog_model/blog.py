@@ -41,7 +41,7 @@ SET_DEFAULT: 置默认值，删除的时候，外键字段设置为默认值，�
 SET(): 自定义一个值，该值当然只能是对应的实体了
 """
 class Blog(models.Model):
-    title=models.CharField('标题',max_length=32)
+    title=models.CharField('标题',max_length=266)
     author=models.CharField('作者',max_length=16)
     content=MDTextField()
     read_number = models.IntegerField('阅读人数',default=0)
