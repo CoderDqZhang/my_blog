@@ -54,6 +54,8 @@ def homeView(request,page = 1, categary=0, data_group= "", tag_id = 0, *args, **
 def detailView(request, blog_id = 0, *args, **kwargs):
     print(request.GET.get('blog_id'))
     blog = Blog.objects.get(id=request.GET.get('blog_id'))
+    #增加阅读数量
+    blog.increate_readnum()
     blog.content = markdown.markdown(blog.content, extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',

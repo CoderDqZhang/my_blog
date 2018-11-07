@@ -44,7 +44,7 @@ class Blog(models.Model):
     title=models.CharField('标题',max_length=266)
     author=models.CharField('作者',max_length=16)
     content=MDTextField()
-    read_number = models.IntegerField('阅读人数',default=0)
+    read_number = models.PositiveIntegerField('阅读人数',default=0)
     com_number = models.IntegerField('评论人数', default=0)
     pub=models.DateField('发布时间',auto_now_add=True)
     category=models.ForeignKey(Category,verbose_name='分类',on_delete=models.CASCADE)#多对一（博客--类别）
@@ -52,6 +52,11 @@ class Blog(models.Model):
     class Meta:
         verbose_name="博客"
         verbose_name_plural=verbose_name
+
+    #阅读数量增加
+    def increate_readnum(self):
+        self.read_number += 1
+        self.save(update_fields=['read_number'])
 
     def __unicode__(self):
         return self.title
