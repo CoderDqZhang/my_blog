@@ -13,5 +13,9 @@ urlpatterns = [
 
     url(r'^onetest/',h5_blog.testView),
 
+
+    #json test
+    url(r'^test_object_filter',blog.test_object_filter)
+
     # url('test',h5_blog.test),
 ]

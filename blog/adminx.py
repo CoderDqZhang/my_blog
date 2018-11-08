@@ -14,7 +14,7 @@ from blog.blog_model.blog import Blog,Category,Comment,Tag
 from django.forms import widgets
 from my_blog import settings
 from xadmin.views.base import ModelAdminView, filter_hook, csrf_protect_m
-
+from mdeditor.widgets import MDEditorWidget
 
 class BaseSetting(object):
     enable_themes = True

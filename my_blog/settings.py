@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -153,3 +153,32 @@ HERE = os.path.dirname(os.path.dirname(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(HERE, "../my_blog/blog/static/").replace('\\', '/')
+
+MDEDITOR_CONFIGS = {
+    'default': {
+        'width': '90%',
+        'heigth': 500,
+        'toolbar': ["undo", "redo", "|",
+                    "bold", "del", "italic", "quote", "ucwords", "uppercase",
+                    "lowercase", "|",
+                    "h1", "h2", "h3", "h5", "h6", "|",
+                    "list-ul", "list-ol", "hr", "|",
+                    "link", "reference-link", "image", "code",
+                    "preformatted-text", "code-block", "table", "datetime",
+                    "emoji", "html-entities", "pagebreak", "goto-line", "|",
+                    "help", "info",
+                    "||", "preview", "watch", "fullscreen"],
+        'upload_image_formats': ["jpg", "JPG", "jpeg", "JPEG", "gif", "GIF",
+                                 "png", "PNG", "bmp", "BMP", "webp", "WEBP"],
+        'image_floder': 'editor',
+        'theme': 'default',  # dark / default
+        'preview_theme': 'default',  # dark / default
+        'editor_theme': 'default',  # pastel-on-dark / default
+        'toolbar_autofixed': True,
+        'search_replace': True,
+        'emoji': True,
+        'tex': True,
+        'flow_chart': True,
+        'sequence': True
+    }
+}

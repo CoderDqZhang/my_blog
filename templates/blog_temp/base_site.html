@@ -11,6 +11,12 @@
     <link href="../../static/blog_temp/css/m.css" rel="stylesheet">
     {% load staticfiles %}
     <link rel="icon" href="../../static/images/logo.png">
+    <link rel="stylesheet" type="text/css" href="../../static/css/code.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../../static/css/editormd.logo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/editormd.preview.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/editormd.min.css"/>
+
     <link rel="stylesheet" type="text/css" href="../../static/css/base_site.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/base_default.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/home_detail.css">
@@ -58,6 +64,11 @@
 <footer>
     <p>Design by <a href="/">{{ user.nickname }}个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
 </footer>
+
 <script src="../../static/blog_temp/js/nav.js"></script>
+
+
+{% block js %}
+{% endblock %}
 </body>
 </html>

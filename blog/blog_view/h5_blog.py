@@ -27,8 +27,8 @@ def homeView(request, page = 1, categary=0, data_group= "", tag_id = 0, *args, *
     else:
         blog_list = Blog.objects.all().order_by('pub')
 
-    click_blog_list = Blog.objects.all().order_by('read_number')#点击数排行
-    recommond_list = Blog.objects.all().filter(recommend=True)#站长推荐文章列表
+    click_blog_list = Blog.objects.all().order_by('read_number')[:5]#点击数排行前5
+    recommond_list = Blog.objects.all().filter(recommend=True)[:5]#站长推荐文章列表前5
 
     for blog in blog_list:
         print(blog.image)
@@ -68,11 +68,12 @@ def detailView(request, blog_id = 0, *args, **kwargs):
     blog = Blog.objects.get(id=request.GET.get('blog_id'))
     #增加阅读数量
     blog.increate_readnum()
-    blog.content = markdown.markdown(blog.content, extensions=[
-        'markdown.extensions.extra',
-        'markdown.extensions.codehilite',
-        'markdown.extensions.toc'
-    ])
+    # blog.content = markdown.markdown(blog.content.replace("\r\n", '\n'), extensions=[
+    #     'markdown.extensions.extra',
+    #     'markdown.extensions.codehilite',
+    #     'markdown.extensions.toc'
+    # ],safe_mode=True,enable_attributes=False)
+    # print(blog.content)
     blog_nex_pre_data = has_nex_pre(request.GET.get('blog_id'))
     return render(request, 'blog/../../templates/blog_temp/detail.html', {'blog': blog, 'blog_nex_pre_data': blog_nex_pre_data,
                                                 'categary_id': 0,
