@@ -13,7 +13,7 @@ def about(request, *args, **kwargs):
                                                    'categary_list': get_categary_data(),})
 
 def homeView(request, page = 1, categary=0, data_group= "", tag_id = 0, *args, **kwargs):
-    print(request)
+
     if request.GET.get('categary') != None:
         blog_list = Blog.objects.filter(category__id =request.GET.get('categary')).order_by('pub')
         categary = int(request.GET.get('categary'))
@@ -27,8 +27,11 @@ def homeView(request, page = 1, categary=0, data_group= "", tag_id = 0, *args, *
     else:
         blog_list = Blog.objects.all().order_by('pub')
 
-    click_blog_list = Blog.objects.all().order_by('read_number')
-    recommond_list = Blog.objects.all().filter(recommend=True)
+    click_blog_list = Blog.objects.all().order_by('read_number')#点击数排行
+    recommond_list = Blog.objects.all().filter(recommend=True)#站长推荐文章列表
+
+    for blog in blog_list:
+        print(blog.image)
 
     paginator = Paginator(blog_list, 2)
     #分页控制

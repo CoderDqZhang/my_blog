@@ -44,7 +44,7 @@ class Blog(models.Model):
     title=models.CharField('标题',max_length=255)
     author=models.CharField('作者',max_length=16)
     content=MDTextField()
-    image = models.ImageField('展示图片',upload_to="media/blog_list/%Y/%m", default=u"image/list.png", max_length=200, null=True)
+    image = models.ImageField('展示图片',upload_to="media/blog_list/%Y/%m", default=u"image/list.png", blank=True, null=True)
     read_number = models.PositiveIntegerField('阅读人数',default=0)
     com_number = models.IntegerField('评论人数', default=0)
     pub=models.DateField('发布时间',auto_now_add=True)

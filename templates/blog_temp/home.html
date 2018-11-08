@@ -32,15 +32,20 @@
     <article>
         <div class="blogs">
             {% for blog in blog_list %}
-                <li><span class="blogpic"><a href="../detail/?blog_id={{ blog.id }}&categary={{ categary_id }}"><img
-                        src="/media/{{ blog.image }}"></a></span>
+                <li>
+                    {% if blog.image != 'image/list.png' %}
+                        <span class="blogpic"><a href="../detail/?blog_id={{ blog.id }}&categary={{ categary_id }}">
+                    <img
+                            src="/media/{{ blog.image }}"></a></span>
+                    {% endif %}
                     <h3 class="blogtitle"><a
                             href="../detail/?blog_id={{ blog.id }}&categary={{ categary_id }}">{{ blog.title }}</a></h3>
                     <div class="bloginfo">
                         <p>{{ blog.content }}</p>
                     </div>
                     <div class="autor"><span class="lm"><a
-                            href="../detail/?blog_id={{ blog.id }}&categary={{ categary_id }}" title="{{ blog.category.name }}"
+                            href="../detail/?blog_id={{ blog.id }}&categary={{ categary_id }}"
+                            title="{{ blog.category.name }}"
                             target="_blank" class="classname">{{ blog.category.name }}</a></span><span
                             class="dtime">{{ blog.pub }}</span><span class="viewnum">浏览（<a
                             href="/">{{ blog.read_number }}</a>）</span><span
@@ -82,7 +87,11 @@
                     {% for blog in click_blog_list %}
                         <li><b><a href="/detail/?blog_id={{ blog.id }}&categary={{ categary_id }}"
                                   target="_blank">{{ blog.title }}</a></b>
-                            <p><i><img src="/media/{{ blog.image }}"></i>{{ blog.content }}
+                            <p>
+                                {% if blog.image != 'image/list.png' %}
+                                    <i><img src="/media/{{ blog.image }}"></i>
+                                {% endif %}
+                                {{ blog.content }}
                             </p>
                         </li>
                     {% endfor %}
@@ -94,7 +103,9 @@
                     {% for blog in recommond_list %}
                         <li><b><a href="/detail/?blog_id={{ blog.id }}&categary={{ categary_id }}"
                                   target="_blank">{{ blog.title }}</a></b>
-                            <p><i><img src="/media/{{ blog.image }}"></i>{{ blog.content }}
+                            <p>{% if blog.image != 'image/list.png' %}
+                                <i><img src="/media/{{ blog.image }}"></i>
+                            {% endif %}{{ blog.content }}
                             </p>
                         </li>
                     {% endfor %}
@@ -109,22 +120,24 @@
         </div>
     </article>
     <div class="blank"></div>
-    <div class="pagelist"><a title="Total record">&nbsp;<b>{{ blog_list.paginator.num_pages }}</b></a>&nbsp;
-        {% for index in blog_list.paginator.page_range %}
-            {% if index == page %}
-                <a href="?page={{ index }}&categary={{ categary_id }}">
-                    {{ index }}</a>
+    {% if blog_list.paginator.num_pages > 1 %}
+        <div class="pagelist"><a title="Total record">&nbsp;<b>{{ blog_list.paginator.num_pages }}</b></a>&nbsp;
+            {% for index in blog_list.paginator.page_range %}
+                {% if index == page %}
+                    <a href="?page={{ index }}&categary={{ categary_id }}">
+                        {{ index }}</a>
+                {% else %}
+                    <a href="?page={{ index }}&categary={{ categary_id }}">
+                        {{ index }}</a>
+                {% endif %}
+            {% endfor %}&nbsp;
+            {% if page == blog_list.paginator.num_pages %}
+                <a href="?page={{ blog_list.paginator.num_pages }}&categary={{ categary_id }}">
+                    下一页</a>
             {% else %}
-                <a href="?page={{ index }}&categary={{ categary_id }}">
-                    {{ index }}</a>
+                <a href="?page={{ blog_list.next_page_number }}&categary={{ categary_id }}">
+                    下一页</a>
             {% endif %}
-        {% endfor %}&nbsp;
-        {% if page == blog_list.paginator.num_pages %}
-            <a href="?page={{ blog_list.paginator.num_pages }}&categary={{ categary_id }}">
-                下一页</a>
-        {% else %}
-            <a href="?page={{ blog_list.next_page_number }}&categary={{ categary_id }}">
-                下一页</a>
-        {% endif %}
-        <a href="?page={{ blog_list.paginator.num_pages }}&categary={{ categary_id }}">尾页</a></div>
+            <a href="?page={{ blog_list.paginator.num_pages }}&categary={{ categary_id }}">尾页</a></div>
+    {% endif %}
 {% endblock %}
