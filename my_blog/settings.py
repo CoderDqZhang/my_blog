@@ -29,7 +29,7 @@ if (define.get_mac_address() == '00:16:3e:08:f3:70') :
     DEBUG = False
 else:
     DEBUG = True
-DEBUG = True
+# DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
