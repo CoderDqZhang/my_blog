@@ -36,3 +36,180 @@
     display: list-item;
     text-align: -webkit-match-parent;
 }
+
+.support-author{
+    min-height: 144px;
+    padding: 20px 0;
+    text-align: center;
+    clear: both;
+}
+
+.support-author p {
+    padding: 0 30px;
+    margin-bottom: 20px;
+    min-height: 24px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #969696;
+}
+
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+    border-radius: 20px;
+}
+
+.supporter {
+    height: 50px;
+}
+
+.meta-bottom {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: #00A000;
+}
+
+.liek{
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+
+/*.like[data-v-6ddd02c6] {*/
+    /*display: inline-block;*/
+/*}*/
+
+.like .like-group[data-v-6ddd02c6] {
+    /*position: relative;*/
+    padding: 10px 0 11px 0;
+    font-size: 0;
+    border: 1px solid #EA6F5A;
+    border-radius: 30px;
+    margin-right: 80px;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.like .like-group .btn-like[data-v-6ddd02c6]:before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 2px;
+    width: 50px;
+    height: 50px;
+    background-image: url(//cdn2.jianshu.io/assets/web/like_animation_steps-62a00a7….png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 1000px 50px;
+}
+
+.like .like-group .btn-like[data-v-6ddd02c6] {
+    display: inline-block;
+    font-size: 19px;
+}
+
+.like .like-group .btn-like a[data-v-6ddd02c6] {
+    position: relative;
+    padding: 18px 30px 18px 55px;
+    color: #EA6F5A;
+}
+
+.like .like-group .modal-wrap[data-v-6ddd02c6] {
+    font-size: 18px;
+    border-left: 1px solid rgba(236, 97, 73, 0.4);
+    display: inline-block;
+    margin-left: -15px;
+}
+
+.like .like-group .modal-wrap a[data-v-6ddd02c6] {
+    color: #EA6F5A;
+    padding: 18px 26px 18px 18px;
+}
+
+.meta-bottom .share-group {
+    /*float: right;*/
+    /*margin-top: 6px;*/
+}
+
+.meta-bottom .share-group .share-circle {
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    text-align: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 50%;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+}
+
+.iconfont {
+    font-family: iconfont!important;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: 400!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.meta-bottom .share-group .share-circle .ic-wechat {
+    color: #00bb29;
+}
+
+.meta-bottom .share-group .share-circle i {
+    margin-top: 10px;
+    font-size: 24px;
+    line-height: 2;
+}
+
+.meta-bottom .share-group .share-circle .ic-weibo {
+    color: #e05244;
+}
+
+.meta-bottom .share-group .share-circle i {
+    margin-top: 10px;
+    font-size: 24px;
+    line-height: 2;
+}
+
+.ic-wechat:before {
+    content: "\E604";
+}
+
+.ic-weibo:before {
+    content: "\E605";
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.blog_has_{
+    margin-top: 100px;
+}
