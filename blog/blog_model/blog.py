@@ -50,6 +50,7 @@ class Blog(models.Model):
     category=models.ForeignKey(Category,verbose_name='分类',on_delete=models.CASCADE)#多对一（博客--类别）
     tag=models.ManyToManyField(Tag,verbose_name='标签')#(多对多)
     recommend = models.BooleanField('推荐',default=False)
+    like_number = models.PositiveIntegerField('喜欢人数',default=0)
 
     class Meta:
         verbose_name="博客"
