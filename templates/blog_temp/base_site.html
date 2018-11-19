@@ -50,7 +50,7 @@
                 {% for categray in categary_list %}
                     <li><a href="../list/?categary={{ categray.id }}">{{ categray.name }}</a></li>
                 {% endfor %}
-                <li><a href="../about">关于我</a></li>
+{#                <li><a href="../about">关于我</a></li>#}
             </ul>
         </div>
         <nav class="topnav" id="topnav">
@@ -58,14 +58,14 @@
                 {% for categray in categary_list %}
                     <li><a href="../list/?categary={{ categray.id }}">{{ categray.name }}</a></li>
                 {% endfor %}
-                <li><a href="../about">关于我</a></li>
+{#                <li><a href="../about">关于我</a></li>#}
             </ul>
         </nav>
     </div>
 </header>
 {% block content %} {% endblock %}
 <footer>
-    <p>Design by <a href="/">{{ user.nickname }}个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+    <p>Design by <a href="/">{{ user.nickname }}个人博客</a> <a href="/"></a></p>
 </footer>
 
 <script src="../../static/blog_temp/js/nav.js"></script>
