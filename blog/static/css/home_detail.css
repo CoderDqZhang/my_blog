@@ -255,9 +255,9 @@ a {
     z-index: 100;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    /*justify-content: center;*/
+    /*align-content: center;*/
+    /*align-items: center;*/
 }
 .mask-div{
     margin: 300px auto;
@@ -265,4 +265,43 @@ a {
 }
 .mask-div img{
     width: 100%;
+}
+
+.comment{
+    margin-top: 10px;
+    background-color: white;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px;
+}
+
+.comment .lable_value{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.comment .title{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 15px;
+}
+
+.comment .content{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100%;
+    height: 140px;
+    line-height: 20px;
+    font-size: 15px;
+}
+
+.submit-date{
+    margin-left: 10px;
+    font-size: 10px;
+    color: #d0d0d0;
 }

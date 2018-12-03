@@ -68,7 +68,7 @@ class Comment(models.Model):
     blog=models.ForeignKey(Blog,verbose_name='博客',on_delete=models.CASCADE)#(博客--评论:一对多)
     name=models.CharField('称呼',max_length=16)
     email=models.EmailField('邮箱')
-    content=models.CharField('内容',max_length=240)
+    content=models.TextField('内容',max_length=255)
     pub=models.DateField('发布时间',auto_now_add=True)
 
     class Meta:

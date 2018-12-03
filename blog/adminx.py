@@ -11,6 +11,7 @@ from xadmin.layout import Fieldset, Main, Side, Row
 from django.utils.translation import ugettext as _
 from blog.blog_model.account import Account
 from blog.blog_model.blog import Blog,Category,Comment,Tag
+from blog.blog_model.resume import ResumeModel
 from django.forms import widgets
 from my_blog import settings
 from xadmin.views.base import ModelAdminView, filter_hook, csrf_protect_m
@@ -42,6 +43,8 @@ class GlobalSettings(object):
                     , 'url': self.get_model_url(Tag, 'changelist')},
                 {'title': '评论管理', 'icon': 'fa fa-vimeo-square'
                     , 'url': self.get_model_url(Comment, 'changelist')},
+                {'title': '简历管理', 'icon': 'fa fa-vimeo-square'
+                    , 'url': self.get_model_url(ResumeModel, 'changelist')},
             )},
 
         )
@@ -58,6 +61,8 @@ class BlogAdmin(object):
 class CategoryAdmin(object):
     list_display = ('name',)
 
+class ResumeModelAdmin(object):
+    list_display = ('title','resume')
 
 class TagAdmin(object):
     list_display = ('name',)
@@ -74,6 +79,7 @@ xadmin.site.register(Tag, TagAdmin)
 xadmin.site.register(Comment, CommentAdmin)
 xadmin.site.register(Blog, BlogAdmin)
 xadmin.site.register(Account, AccountAdmin)
+xadmin.site.register(ResumeModel, ResumeModelAdmin)
 
 xadmin.site.register(xviews.BaseAdminView, BaseSetting)
 xadmin.site.register(xviews.CommAdminView, GlobalSettings)
