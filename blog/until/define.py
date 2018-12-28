@@ -13,7 +13,7 @@ def get_mac_address():
     mac=uuid.UUID(int = uuid.getnode()).hex[-12:]
     return ":".join([mac[e:e+2] for e in range(0,11,2)])
 
-if (get_mac_address() == '00:16:3e:08:f3:70') :
+if (get_mac_address() == '00:50:56:82:19:40') :
     print(get_mac_address())
     MEDIAURL = 'https://ballgame.mobi/media/'
 else:
