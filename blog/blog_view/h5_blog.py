@@ -31,7 +31,7 @@ def homeView(request, page=1, categary=0, data_group="", tag_id=0, *args, **kwar
     click_blog_list = Blog.objects.all().order_by('read_number')[:5]  # 点击数排行前5
     recommond_list = Blog.objects.all().filter(recommend=True)[:5]  # 站长推荐文章列表前5
 
-    paginator = Paginator(blog_list, 2)
+    paginator = Paginator(blog_list, 10)
     # 分页控制
 
     if request.GET.get('page') != None:
